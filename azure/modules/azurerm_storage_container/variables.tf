@@ -22,7 +22,7 @@ variable "resource_group_name" {
 
 variable "storage_account_name" {
   type = string
-  default = "chrystian_barros_sa"
+  default = "chrystianbarrosstaccount"
 }
 
 variable "storage_container_name" {
