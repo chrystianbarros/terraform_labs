@@ -8,8 +8,8 @@ terraform {
   }
 
   backend "s3" {
-    bucket = "chrystian-barros-bucket-bkp"
-    key = "aws_s3_bucket/terraform.tfstate"
+    bucket = "chrystian-barros-bucket"
+    key    = "aws_vpc/terraform.tfstate"
     region = "sa-east-1"
   }
 }
@@ -21,8 +21,4 @@ provider "aws" {
       managed_by = "terraform"
     }
   }
-}
-
-resource "aws_s3_bucket" "bucket" {
-  bucket = "chrystian-barros-bucket"
 }
