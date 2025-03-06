@@ -37,3 +37,7 @@ override.tf.json
 terraform.rc
 .terraform.lock.hcl
 .terraform/
+
+#Ignore key files
+*.key
+*.pub
