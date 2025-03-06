@@ -17,20 +17,20 @@ resource "aws_instance" "instance" {
   }
 
   connection {
-    host = self.public_ip
-    type = "ssh"
-    user = "ubuntu"
+    host        = self.public_ip
+    type        = "ssh"
+    user        = "ubuntu"
     private_key = file("./private_key.key")
   }
 
   provisioner "remote-exec" {
-    inline = [ 
+    inline = [
       "echo subnet_id: ${data.terraform_remote_state.vpc.outputs.subnet_id} >> ./subnet_id.txt"
-     ]
+    ]
   }
 
   provisioner "file" {
-    content = "this is a content created by a provisioner"
+    content     = "this is a content created by a provisioner"
     destination = "~/provisioner_file_1.txt"
   }
 }
@@ -42,5 +42,5 @@ resource "aws_instance" "instance_2" {
   subnet_id                   = data.terraform_remote_state.vpc.outputs.subnet_id
   vpc_security_group_ids      = [data.terraform_remote_state.vpc.outputs.security_group_id]
   associate_public_ip_address = true
-  user_data = file("../../scripts/docker.sh")
+  user_data                   = file("../../scripts/docker.sh")
 }
